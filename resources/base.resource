@@ -2,6 +2,7 @@
 Library    SeleniumLibrary
 Library    DateTime
 Library    OperatingSystem
+Library    Collections
 
 Resource    global-variables.robot
 
