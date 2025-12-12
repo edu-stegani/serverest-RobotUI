@@ -5,12 +5,18 @@ Library    OperatingSystem
 
 Resource    global-variables.robot
 
-*** Keywords ***
+*** Variables ***
+${HEADLESS}    true
+@{CHROME_ARGS}    --no-sandbox    --disable-dev-shm-usage    --disable-gpu
 
+*** Keywords ***
 Abrir navegador e acessar sistema
-    Open Browser    browser=chrome
+    IF    '${HEADLESS}' == 'true'
+        Append To List    ${CHROME_ARGS}    --headless=new
+    END
+    ${options}=    Create Dictionary    args=${CHROME_ARGS}
+    Open Browser    ${login-url}    chrome    options=${options}
     Maximize Browser Window
-    Go To    url=${login-url}
     Wait Until Element Is Visible    xpath=${form-login}
     Criar Diretorio Evidencias
 
