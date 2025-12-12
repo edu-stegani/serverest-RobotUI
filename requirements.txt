@@ -4,5 +4,5 @@ robotframework-jsonlibrary
 robotframework-requests
 robotframework-faker
 webdriver-manager
-allure-robotframework
-robotframework-allure
+# allure-robotframework
+# robotframework-allure
