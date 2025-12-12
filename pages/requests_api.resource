@@ -1,13 +1,18 @@
 *** Settings ***
 Library    RequestsLibrary
+Library    FakerLibrary
 
 Resource    ../resources/base.resource
 
 *** Keywords ***
 Cadastrar Usuario na Api
     Create Session    alias=serverest    url=${BASE_URL}    disable_warnings=${True}
+    
+    ${name}    First Name
+    ${email}   Email
+    ${password}   Password
 
-    ${payload}    Create Dictionary    nome=edu teste    email=edu@teste.com    password=senhaforte1    administrador=false
+    ${payload}    Create Dictionary    nome=${name}    email=${email}    password=${password}    administrador=false
     ${response}    POST On Session    alias=serverest    url=${endpoint_USUARIOS}    json=${payload}    expected_status=any
     Set Suite Variable    ${response}
 
@@ -15,6 +20,7 @@ Cadastrar Usuario na Api
     ${body}=    To Json    ${response.content}
     Should Be Equal    ${body["message"]}    Cadastro realizado com sucesso
     Set Suite Variable    ${id}    ${body["_id"]}
+    Set Global Variable    ${payload}
     Log    ${id}
 
 Autenticação Adm

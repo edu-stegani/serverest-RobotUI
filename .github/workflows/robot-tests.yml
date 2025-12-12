@@ -1,0 +1,50 @@
+name: Robot Tests CI
+
+on:
+  push:
+    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+jobs:
+  robot-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+
+    - name: Install Chrome
+      run: |
+        sudo apt update
+        sudo apt install -y google-chrome-stable
+
+    - name: Run Robot Tests
+      run: |
+        robot -d results tests
+
+    - name: Save Robot Results (Logs & Reports)
+      uses: actions/upload-artifact@v3
+      with:
+        name: robot-results
+        path: results/
+
+
+    # - name: Generate Allure Report
+    #   run: |
+    #     allure generate results -o allure-report --clean
+
+    # - name: Upload Allure Report
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: allure-report
+    #     path: allure-report/

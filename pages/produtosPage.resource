@@ -12,11 +12,11 @@ Quando pesquiso por um produto não cadastrado
     E clico no botão "Pesquisar"
 
 Quando pesquiso por um produto cadastrado
-    Input Text    xpath=${campoPesquisar}    text=Monitor de testes
+    Input Text    xpath=${campoPesquisar}    text=Logitech MX Vertical
     E clico no botão "Pesquisar"
 
 Então vejo o card do produto na lista
-    Wait Until Element Is Visible    xpath=//div[@class="card-body"]/h5[contains(.,'Monitor de testes')]
+    Wait Until Element Is Visible    xpath=//div[@class="card-body"]/h5[contains(.,'Logitech MX Vertical')]
     Tirar Print com TestName
 
 E aciono "Detalhes"

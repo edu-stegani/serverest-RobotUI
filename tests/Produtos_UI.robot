@@ -2,9 +2,12 @@
 Resource    ../resources/base.resource
 Resource    ../pages/loginPage.resource
 Resource    ../pages/produtosPage.resource
+Resource    ../pages/requests_api.resource
 
-Suite Setup    Abrir navegador e acessar sistema
-Test Setup    Fazer login    edu@teste.com    senhaforte1
+Suite Setup    Run Keywords
+...    Abrir navegador e acessar sistema
+...    Cadastrar Usuario na Api
+Test Setup    Fazer login    ${payload.email}    ${payload.password}
 Test Teardown    Logout
 Suite Teardown    Close All Browsers
 

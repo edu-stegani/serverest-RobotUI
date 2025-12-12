@@ -4,6 +4,7 @@ Library    FakerLibrary
 
 Resource    ../resources/base.resource
 Resource    ../pages/loginPage.resource
+Resource    ../pages/requests_api.resource
 
 *** Keywords ***
 Dado que estou na page cadastro Serverest
@@ -44,6 +45,6 @@ Quando preencho os campos com excessão de "${campo}"
 Quando preencho os campos com email já cadastrado
     ${nome}=    First Name
     ${senha}=   Password
-    Input Text    css=#nome    text=${nome}
-    Input Text    css=#email    text=edu@teste.com
-    Input Password    css=#password    password=${senha}
+    Input Text    css=#nome    text=${payload.nome}
+    Input Text    css=#email    text=${payload.email}
+    Input Password    css=#password    password=${payload.password} 

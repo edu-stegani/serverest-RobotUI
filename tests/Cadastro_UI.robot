@@ -1,4 +1,6 @@
 *** Settings ***
+Library    SeleniumLibrary
+Library    RequestsLibrary
 
 Suite Setup    Abrir navegador e acessar sistema
 Suite Teardown    Close All Browsers

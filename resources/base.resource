@@ -8,7 +8,7 @@ Resource    global-variables.robot
 *** Keywords ***
 
 Abrir navegador e acessar sistema
-    Open Browser    browser=edge
+    Open Browser    browser=chrome
     Maximize Browser Window
     Go To    url=${login-url}
     Wait Until Element Is Visible    xpath=${form-login}
