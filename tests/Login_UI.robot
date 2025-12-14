@@ -1,6 +1,6 @@
 *** Settings ***
 
-Suite Setup    Abrir navegador e acessar sistema modo "headless"
+Suite Setup    Abrir navegador e acessar sistema
 Suite Teardown    Close All Browsers
 
 Resource    ../resources/base.resource

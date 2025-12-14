@@ -5,11 +5,14 @@ Library    OperatingSystem
 
 Resource    global-variables.robot
 
+*** Variables ***
+${HEADLESS}    true
+
 *** Keywords ***
-Abrir navegador e acessar sistema modo "${modo}"
-    IF  "${modo}" == "headless"
+Abrir navegador e acessar sistema
+    IF  "${HEADLESS}" == "true"
         Open Browser    ${login-url}    headlesschrome    options=add_argument("--window-size=1920,1080")
-    ELSE IF  "${modo}" == "local"
+    ELSE
         Open Browser    ${login-url}    chrome
         Maximize Browser Window
     END

@@ -2,7 +2,7 @@
 Library    SeleniumLibrary
 Library    RequestsLibrary
 
-Suite Setup    Abrir navegador e acessar sistema modo "headless"
+Suite Setup    Abrir navegador e acessar sistema
 Suite Teardown    Close All Browsers
 
 Resource    ../resources/base.resource
@@ -10,7 +10,6 @@ Resource    ../pages/cadastroPage.resource
 
 *** Test Cases ***
 Cenario - Cadastro com sucesso
-    [Tags]    test
     [Teardown]    Logout
     Dado que estou na page cadastro Serverest
     Quando preencho os campos "nome", "email" e "password"
@@ -18,6 +17,7 @@ Cenario - Cadastro com sucesso
     Então vejo a mensagem "Cadastro realizado com sucesso"
 
 Cenario - Nome em branco
+    [Tags]    test
     Dado que estou na page cadastro Serverest
     Quando preencho os campos com excessão de "nome"
     E clico no botão "Cadastrar"

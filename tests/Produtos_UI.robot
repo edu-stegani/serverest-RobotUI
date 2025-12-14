@@ -4,7 +4,7 @@ Resource    ../pages/loginPage.resource
 Resource    ../pages/produtosPage.resource
 Resource    ../pages/requests_api.resource
 
-Suite Setup    Abrir navegador e acessar sistema modo "headless"
+Suite Setup    Abrir navegador e acessar sistema
 Test Setup    Fazer login    ${emailCadastrado}    ${senhaCadastrada}
 Test Teardown    Logout
 Suite Teardown    Close All Browsers
