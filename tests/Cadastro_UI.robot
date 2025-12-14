@@ -2,16 +2,15 @@
 Library    SeleniumLibrary
 Library    RequestsLibrary
 
-Suite Setup    Abrir navegador e acessar sistema
+Suite Setup    Abrir navegador e acessar sistema modo "headless"
 Suite Teardown    Close All Browsers
 
 Resource    ../resources/base.resource
 Resource    ../pages/cadastroPage.resource
-Resource    ../pages/loginPage.resource
-Resource    ../pages/requests_api.resource
 
 *** Test Cases ***
 Cenario - Cadastro com sucesso
+    [Tags]    test
     [Teardown]    Logout
     Dado que estou na page cadastro Serverest
     Quando preencho os campos "nome", "email" e "password"

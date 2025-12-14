@@ -19,6 +19,10 @@ Dado que estou na page login Serverest
     Element Should Be Visible    css=#email
     Element Should Be Visible    css=#password
 
+Quando preencho os campos com email e senha válidos
+    Input Text    css=#email    ${emailCadastrado}
+    Input Password    css=#password    ${senhaCadastrada}
+
 Quando preencho os dados com "${email}" e "${password}"
     Input Text    css=#email    ${email}
     Input Password    css=#password    ${password}

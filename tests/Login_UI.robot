@@ -1,6 +1,6 @@
 *** Settings ***
 
-Suite Setup    Abrir navegador e acessar sistema
+Suite Setup    Abrir navegador e acessar sistema modo "headless"
 Suite Teardown    Close All Browsers
 
 Resource    ../resources/base.resource
@@ -10,10 +10,10 @@ Resource    ../pages/loginPage.resource
 Cenario 01 - Login com sucesso
     [Teardown]    Logout
     Dado que estou na page login Serverest
-    Quando preencho os dados com "edu@teste.com" e "senhaforte1"
+    Quando preencho os campos com email e senha válidos
     E clico no botão "Entrar"
     Então sou redirecionado a dashboard
-
+ 
 Cenario 02 - Senha em branco
     Dado que estou na page login Serverest
     Quando preencho os dados com "edu@teste.com" e "${EMPTY}"

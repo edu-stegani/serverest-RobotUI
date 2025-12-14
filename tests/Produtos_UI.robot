@@ -4,10 +4,8 @@ Resource    ../pages/loginPage.resource
 Resource    ../pages/produtosPage.resource
 Resource    ../pages/requests_api.resource
 
-Suite Setup    Run Keywords
-...    Abrir navegador e acessar sistema
-...    Cadastrar Usuario na Api
-Test Setup    Fazer login    ${payload.email}    ${payload.password}
+Suite Setup    Abrir navegador e acessar sistema modo "headless"
+Test Setup    Fazer login    ${emailCadastrado}    ${senhaCadastrada}
 Test Teardown    Logout
 Suite Teardown    Close All Browsers
 

@@ -2,22 +2,17 @@
 Library    SeleniumLibrary
 Library    DateTime
 Library    OperatingSystem
-Library    Collections
 
 Resource    global-variables.robot
 
-*** Variables ***
-${HEADLESS}    true
-@{CHROME_ARGS}    --no-sandbox    --disable-dev-shm-usage    --disable-gpu
-
 *** Keywords ***
-Abrir navegador e acessar sistema
-    IF    '${HEADLESS}' == 'true'
-        Append To List    ${CHROME_ARGS}    --headless=new
+Abrir navegador e acessar sistema modo "${modo}"
+    IF  "${modo}" == "headless"
+        Open Browser    ${login-url}    headlesschrome    options=add_argument("--window-size=1920,1080")
+    ELSE IF  "${modo}" == "local"
+        Open Browser    ${login-url}    chrome
+        Maximize Browser Window
     END
-    ${options}=    Create Dictionary    args=${CHROME_ARGS}
-    Open Browser    ${login-url}    chrome    options=${options}
-    Maximize Browser Window
     Wait Until Element Is Visible    xpath=${form-login}
     Criar Diretorio Evidencias
 
@@ -35,5 +30,5 @@ Tirar Print com TestName
     Capture Page Screenshot    ${TEST_NAME}-{index}.png
 
 Então vejo a mensagem "${mensagem}"
-    Wait Until Page Contains    text=${mensagem}
+    Wait Until Page Contains    text=${mensagem}    timeout=15s
     Tirar Print com TestName

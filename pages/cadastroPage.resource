@@ -15,14 +15,19 @@ Dado que estou na page cadastro Serverest
     Element Should Be Visible    css=#password
 
 Quando preencho os campos "${nome}", "${email}" e "${senha}"
-    ${nome}=    First Name
-    ${email}=   Email
-    ${senha}=   Password 
-    Log    Nome: ${nome} - Email: ${email} - Senha: ${senha}
+    ${nomeCadastrado}=    First Name
+    ${emailCadastrado}=   Email
+    ${senhaCadastrada}=   Password 
     
-    Input Text    css=#nome    text=${nome}
-    Input Text    css=#email    text=${email}
-    Input Password    css=#password    password=${senha}
+    Set Global Variable    ${nomeCadastrado}
+    Set Global Variable    ${emailCadastrado}
+    Set Global Variable    ${senhaCadastrada}
+
+    Log    Nome: ${nomeCadastrado} - Email: ${emailCadastrado} - Senha: ${senhaCadastrada}
+
+    Input Text    css=#nome    text=${nomeCadastrado}
+    Input Text    css=#email    text=${emailCadastrado}
+    Input Password    css=#password    password=${senhaCadastrada}
 
 Quando preencho os campos com excessão de "${campo}"
     ${nome}=    First Name
