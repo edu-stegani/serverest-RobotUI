@@ -18,7 +18,7 @@ Cenario 02 - Senha em branco
     Dado que estou na page login Serverest
     Quando preencho os dados com "edu@teste.com" e "${EMPTY}"
     E clico no botão "Entrar"
-    Então vejo a mensagem "Password é obrigatório"
+    Então vejo a mensagem "Password é obrigatório - Erro forçado"
 
 Cenario 03 - Email em branco
     Dado que estou na page login Serverest
